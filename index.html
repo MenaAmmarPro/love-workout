@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b20">
+  <meta name="description" content="Our Workout — preset bodyweight routines, a timer with gentle beeps and a shared streak, for Mena.">
+  <title>Our Workout ✦ Love for Mena</title>
+  <link rel="canonical" href="https://menaammarpro.github.io/love-workout/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Our Workout — for Mena">
+  <meta property="og:title" content="Our Workout ✦ Love for Mena">
+  <meta property="og:description" content="Preset bodyweight routines and a timer with gentle beeps — sweat a little, together.">
+  <meta property="og:url" content="https://menaammarpro.github.io/love-workout/">
+  <meta property="og:image" content="https://menaammarpro.github.io/love-workout/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/theme-main.js" defer></script>
+  <script src="js/effects.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Our Workout">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">♥ Our Workout</a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="#routines">Routines</a>
+      <a href="#player">Timer</a>
+      <a href="#history">History</a>
+      <div class="nav-more">
+        <button class="nav-more-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+          More <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-more-menu" role="menu">
+          <a role="menuitem" href="https://menaammarpro.github.io/">All projects</a>
+          <a role="menuitem" href="https://menaammarpro.github.io/love-diary/">Our Diary</a>
+          <a role="menuitem" href="https://menaammarpro.github.io/love-levelup/">Our Level</a>
+          <a role="menuitem" href="https://menaammarpro.github.io/love-nature/">Our Garden</a>
+          <a role="menuitem" href="https://menaammarpro.github.io/loveformymena/">Our little universe ↗</a>
+        </div>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero workout-hero">
+      <p class="eyebrow">A LITTLE SWEAT, TOGETHER</p>
+      <div class="hero-emoji" aria-hidden="true">💪</div>
+      <h1>Our <span>workout.</span></h1>
+      <p class="hero-description">
+        Pick a routine, press start, and move. Gentle beeps count you in and out
+        of every set — no gym, no kit, no excuses. Every finished session is
+        logged here so we can keep the streak alive.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#player">Start a session <span>♥</span></a>
+        <a class="button button-ghost" href="#routines">Choose a routine</a>
+      </div>
+      <p class="signature">Made with love, just for you <span>♥</span></p>
+    </section>
+
+    <section class="section" id="routines">
+      <p class="eyebrow">PICK YOUR PACE</p>
+      <h2>Our <span>routines.</span></h2>
+      <p class="section-copy">Six small plans — a gentle wake-up, a cardio burst, core, legs, a full-body one, and a stretch to finish.</p>
+      <div class="routine-list" id="routine-list"></div>
+    </section>
+
+    <section class="section" id="player">
+      <p class="eyebrow">READY WHEN YOU ARE</p>
+      <h2>The <span>timer.</span></h2>
+      <div class="player-grid">
+        <div class="timer-card" id="timer-card">
+          <p class="timer-phase is-work" id="timer-phase">Ready</p>
+          <p class="timer-display" id="timer-display">0:00</p>
+          <p class="timer-exercise" id="timer-exercise">&nbsp;</p>
+          <p class="timer-next" id="timer-next">&nbsp;</p>
+          <div class="progress-track" role="progressbar" aria-label="Workout progress">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <p class="step-label" id="step-label">&nbsp;</p>
+          <div class="timer-controls">
+            <button class="button button-primary" id="btn-start" type="button">Start <span>♥</span></button>
+            <button class="button button-ghost" id="btn-skip" type="button">Skip</button>
+            <button class="button button-ghost" id="btn-reset" type="button">Reset</button>
+          </div>
+          <label class="beep-toggle">
+            <input type="checkbox" id="toggle-beeps" checked>
+            <span>Beeps on</span>
+          </label>
+          <p class="player-note" id="player-note" aria-live="polite">&nbsp;</p>
+        </div>
+
+        <div class="exercise-panel">
+          <h3 class="panel-title">This routine</h3>
+          <ol class="exercise-list" id="exercise-list"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="history">
+      <p class="eyebrow">KEPT FOR US</p>
+      <h2>Our <span>history.</span></h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-count">0</span>
+          <span class="stat-label">workouts</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-streak">0</span>
+          <span class="stat-label">day streak</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-total">0:00</span>
+          <span class="stat-label">total time</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number stat-small" id="stat-last">never</span>
+          <span class="stat-label">last session</span>
+        </div>
+      </div>
+      <ol class="history-list" id="history-list"></ol>
+    </section>
+
+    <section class="section" id="details">
+      <p class="eyebrow">JUST FOR US</p>
+      <h2>Details.</h2>
+      <div class="settings-actions">
+        <button class="button button-ghost" id="share-button" type="button">Share this page</button>
+        <button class="button button-ghost" id="clear-log" type="button">Clear history</button>
+      </div>
+      <p class="settings-note" id="save-note" aria-live="polite"></p>
+      <p class="section-note">Everything stays on this device — no tracking, no accounts, no network.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with love, just for you <span>♥</span></p>
+    <p class="footer-small">Ammar → Mena · Karachi → Bucharest</p>
+  </footer>
+</body>
+</html>
