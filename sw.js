@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE = "mena-workout-v1";
+const CACHE = "mena-workout-v2";
 
 const ASSETS = [
   "./",
